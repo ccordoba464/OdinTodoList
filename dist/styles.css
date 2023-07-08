@@ -193,7 +193,7 @@ table {
 #projects-title {
   position: relative;
   top: 8px;
-  color: white;
+  font-weight: bold;
 }
 
 .project {
@@ -201,23 +201,17 @@ table {
   height: 60px;
   width: 300px;
   border-radius: 6px;
-  display: grid;
+  display: flex;
   box-sizing: border-box;
   padding: 14px 24px;
-  grid-template-rows: repeat(2, 1fr);
+  align-items: center;
   cursor: pointer;
 }
 
 .project-title {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
-
-.project-priority {
-  font-size: 0.8rem;
-  align-self: end;
-}
-
 #project-body {
   background-color: var(--accent-color);
   grid-row: 2 / 3;
@@ -253,7 +247,7 @@ table {
   background-color: var(--secondary-color);
   display: grid;
   box-sizing: border-box;
-  padding: 20px;
+  padding: 18px;
   gap: 10px;
   border-radius: 8px;
   grid-template-columns: 2fr 1fr;
@@ -270,7 +264,7 @@ table {
 
 .task-date {
   grid-column: 2 / 3;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: bold;
   text-align: end;
   align-self: center;
@@ -281,4 +275,5 @@ table {
   grid-column: 1 / 3;
   font-size: 0.8rem;
   line-height: 15px;
+  text-overflow: ellipsis;
 }

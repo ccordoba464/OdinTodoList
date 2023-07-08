@@ -1,1 +1,1 @@
-console.log("Bruh");
+(()=>{"use strict";!function(){const t=document.getElementById("projects"),e=function(){let t=document.createElement("div");t.classList.add("project");let e=document.createElement("div");return e.classList.add("project-title"),e.textContent="Project: ",t.append(e,projectPriority),t}();e.querySelector(".project-title").textContent+="To-do",t.appendChild(e)}()})();
