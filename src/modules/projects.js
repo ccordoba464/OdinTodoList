@@ -1,8 +1,8 @@
 import displayController from "./display-controller";
 
 const projects = (() => {
-  const projectsElement = document.getElementById("projects");
-  let projects = [];
+  const projectsContainer = document.getElementById("projects");
+  let projectsList = [];
 
   const project = title => {
     let tasks = [3, 1];
@@ -11,13 +11,13 @@ const projects = (() => {
 
   const createProject = title => {
     let projectObject = project(title);
-    projects.push(projectObject);
+    projectsList.push(projectObject);
     let projectElement = createProjectElement(projectObject);
     projectElement.addEventListener(
       "click",
-      displayController.displayTasks(projectElement)
+      displayController.displayTasks(projectObject)
     );
-    projectsElement.append(projectElement);
+    projectsContainer.append(projectElement);
   };
 
   const createProjectElement = project => {
@@ -36,7 +36,7 @@ const projects = (() => {
     return newProject;
   };
 
-  return { projects, createProject };
+  return { projectsList, createProject };
 })();
 
 export default projects;

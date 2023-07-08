@@ -1,15 +1,12 @@
 import projects from "./projects";
 
 const displayController = (() => {
-  const displayTasks = projectElement => {
-    console.log(projectElement);
-    let title = projectElement.querySelector(".project-title");
-    console.log(title);
-    for (let project in projects.projects) {
-      console.log(project);
-
-      if (project.title == title.textContent) {
-        console.log(project.title);
+  const displayTasks = projectObject => {
+    for (let project of projects.projectsList) {
+      if (projectObject.title === project.title) {
+        for (let task of project.tasks) {
+          console.log(task);
+        }
       }
     }
   };
