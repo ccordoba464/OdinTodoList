@@ -4,5 +4,4 @@ init();
 
 function init() {
   projects.createProject("To-do");
-  projects.populateProjects();
 }

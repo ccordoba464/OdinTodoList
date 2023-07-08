@@ -1,17 +1,20 @@
-function createProjectElement(project) {
-  let newProject = document.createElement("div");
-  newProject.classList.add("project");
+import projects from "./projects";
 
-  let projectTitle = document.createElement("div");
-  projectTitle.classList.add("project-title");
-  projectTitle.textContent = project.title;
-  let projectItems = document.createElement("div");
-  projectItems.classList.add("project-items");
-  projectItems.textContent = project.tasks.length;
+const displayController = (() => {
+  const displayTasks = projectElement => {
+    console.log(projectElement);
+    let title = projectElement.querySelector(".project-title");
+    console.log(title);
+    for (let project in projects.projects) {
+      console.log(project);
 
-  newProject.append(projectTitle, projectItems);
+      if (project.title == title.textContent) {
+        console.log(project.title);
+      }
+    }
+  };
 
-  return newProject;
-}
+  return { displayTasks };
+})();
 
-export default createProjectElement;
+export default displayController;
