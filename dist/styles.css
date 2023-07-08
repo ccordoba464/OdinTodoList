@@ -201,10 +201,11 @@ table {
   height: 60px;
   width: 300px;
   border-radius: 6px;
-  display: flex;
+  display: grid;
   box-sizing: border-box;
   padding: 14px 24px;
   align-items: center;
+  grid-template-columns: 4fr 1fr;
   cursor: pointer;
 }
 
@@ -212,6 +213,13 @@ table {
   font-size: 1.2rem;
   font-weight: bold;
 }
+
+.project-items {
+  font-size: 1rem;
+  text-align: end;
+  color: gray;
+}
+
 #project-body {
   background-color: var(--accent-color);
   grid-row: 2 / 3;

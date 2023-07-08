@@ -1,22 +1,23 @@
 function loadPage() {
   const projects = document.getElementById("projects");
-  const initialProject = createProject();
+  const initialProject = project();
   const projectTitle = initialProject.querySelector(".project-title");
   projectTitle.textContent += "To-do";
   projects.appendChild(initialProject);
 }
 
-function createProject() {
+const project = () => {
   let newProject = document.createElement("div");
   newProject.classList.add("project");
 
   let projectTitle = document.createElement("div");
   projectTitle.classList.add("project-title");
-  projectTitle.textContent = "Project: ";
+  let projectItems = document.createElement("div");
+  projectItems.classList.add("project-items");
 
-  newProject.append(projectTitle, projectPriority);
+  newProject.append(projectTitle, projectItems);
 
   return newProject;
-}
+};
 
 export default loadPage;
