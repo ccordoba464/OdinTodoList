@@ -1,7 +1,8 @@
-import loadPage from "./modules/initial-page-load";
+import projects from "./modules/projects";
 
 init();
 
 function init() {
-  loadPage();
+  projects.createProject("To-do");
+  projects.populateProjects();
 }
