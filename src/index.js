@@ -5,12 +5,13 @@ init();
 
 function addButtonListeners() {
   const addProjectButton = document.getElementById("add-project");
-  addProjectButton.addEventListener(
-    "click",
-    displayController.createProjectForm()
-  );
+  addProjectButton.addEventListener("click", () => {
+    displayController.createProjectForm();
+  });
   const addTasksButton = document.getElementById("add-task");
-  addTasksButton.addEventListener("click", displayController.createTaskForm());
+  addTasksButton.addEventListener("click", () => {
+    displayController.createTaskForm();
+  });
 }
 
 function init() {
