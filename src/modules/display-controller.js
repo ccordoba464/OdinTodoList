@@ -1,12 +1,11 @@
 import projects from "./projects";
+import projectTasks from "./tasks";
 
 const displayController = (() => {
   const displayTasks = projectObject => {
     for (let project of projects.projectsList) {
       if (projectObject.title === project.title) {
-        for (let task of project.tasks) {
-          console.log(task);
-        }
+        projectTasks.populateTaskSection(project.tasks);
       }
     }
   };
