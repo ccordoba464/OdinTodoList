@@ -35,7 +35,7 @@ const projectTasks = (() => {
     }
     for (let tasks of projectTasks) {
       let taskElement = createTask(tasks);
-      projectTasks.appendChild(taskElement);
+      projectTasksElement.appendChild(taskElement);
     }
   };
 

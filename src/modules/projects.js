@@ -5,7 +5,7 @@ const projects = (() => {
   let projectsList = [];
 
   const project = title => {
-    let tasks = [3, 1];
+    let tasks = [];
     return { title, tasks };
   };
 
