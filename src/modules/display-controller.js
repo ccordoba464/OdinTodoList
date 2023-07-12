@@ -33,6 +33,25 @@ const displayController = (() => {
     submitButton.textContent = "Add";
     buttonContainer.append(cancelButton, submitButton);
     projectForm.append(formTitle, nameTitle, nameInput, buttonContainer);
+
+    submitButton.addEventListener("click", () => {
+      if (nameInput.checkValidity()) {
+        projects.createProject(nameInput.value);
+        projectForm.remove();
+      } else {
+        alert("Enter Project Name");
+      }
+    });
+
+    cancelButton.addEventListener("click", () => {
+      if (nameInput.checkValidity()) {
+        projects.createProject(nameInput.value);
+        projectForm.remove();
+      } else {
+        alert("Enter Project Name");
+      }
+    });
+
     return projectForm;
   };
 
