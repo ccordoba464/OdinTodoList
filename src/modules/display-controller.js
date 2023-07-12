@@ -155,7 +155,7 @@ const displayController = (() => {
         let projectElementsCreated =
           projectElementsContainer.querySelectorAll(".project");
         projectElementsCreated.forEach(projectElement => {
-          if (projectElement.id === displayController.currentProject.title) {
+          if (projectElement.id === currentProject.title) {
             let tasksNum = projectElement.querySelector(".project-items");
             tasksNum.textContent = +tasksNum.textContent - 1;
           }
@@ -164,7 +164,6 @@ const displayController = (() => {
     }
 
     tasks.populateTaskSection(currentProject.tasks);
-    console.log(currentProject.tasks);
   };
 
   return {
