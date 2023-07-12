@@ -204,7 +204,7 @@ table {
   margin-bottom: 20px;
 }
 
-#name-title {
+.title {
   margin-bottom: 6px;
 }
 
@@ -231,8 +231,9 @@ table {
 #form-button {
   background-color: var(--accent-color);
   width: 100%;
-  height: 100%;
+  height: 40px;
   border-radius: 8px;
+  align-self: center;
 }
 
 #projects {
@@ -294,6 +295,44 @@ table {
   border-radius: 8px;
   font-weight: bold;
   cursor: pointer;
+}
+
+#task-form {
+  background-color: var(--secondary-color);
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 36%;
+  border-radius: 8px;
+  padding: 16px;
+  font-weight: bold;
+}
+
+#task-form #form-title {
+  grid-column: 1 / 3;
+}
+
+.input-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+#task-form input {
+  background-color: var(--accent-color);
+  box-sizing: border-box;
+  width: 100%;
+  height: 30px;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  align-self: center;
+  justify-self: center;
 }
 
 #project-tasks {

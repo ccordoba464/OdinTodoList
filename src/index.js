@@ -15,7 +15,11 @@ function addButtonListeners() {
   });
   const addTasksButton = document.getElementById("add-task");
   addTasksButton.addEventListener("click", () => {
-    displayController.createTaskForm();
+    if (!document.getElementById("task-form")) {
+      const body = document.querySelector("body");
+      let form = displayController.createTaskForm();
+      body.append(form);
+    }
   });
 }
 
