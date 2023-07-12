@@ -151,8 +151,18 @@ const displayController = (() => {
       if (currentProject.title === project.title) {
         project.tasks.splice(project.tasks.indexOf(taskObject), 1);
         currentProject = project;
+        const projectElementsContainer = document.getElementById("projects");
+        let projectElementsCreated =
+          projectElementsContainer.querySelectorAll(".project");
+        projectElementsCreated.forEach(projectElement => {
+          if (projectElement.id === displayController.currentProject.title) {
+            let tasksNum = projectElement.querySelector(".project-items");
+            tasksNum.textContent = +tasksNum.textContent - 1;
+          }
+        });
       }
     }
+
     tasks.populateTaskSection(currentProject.tasks);
     console.log(currentProject.tasks);
   };
