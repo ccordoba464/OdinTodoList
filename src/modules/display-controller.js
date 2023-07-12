@@ -2,7 +2,6 @@ import projects from "./projects";
 import projectTasks from "./tasks";
 
 const displayController = (() => {
-  const body = document.querySelector("body");
   const displayTasks = projectObject => {
     for (let project of projects.projectsList) {
       if (projectObject.title === project.title) {
@@ -22,12 +21,19 @@ const displayController = (() => {
     nameTitle.textContent = "Name";
     const nameInput = document.createElement("input");
     nameInput.setAttribute("required", "true");
+    const buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("button-container");
+    const cancelButton = document.createElement("button");
+    cancelButton.id = "form-button";
+    cancelButton.type = "button";
+    cancelButton.textContent = "Cancel";
     const submitButton = document.createElement("button");
-    submitButton.id = "submit-project";
+    submitButton.id = "form-button";
     submitButton.type = "button";
-    submitButton.textContent = "Submit Name";
-    projectForm.append(formTitle, nameTitle, nameInput, submitButton);
-    body.append(projectForm);
+    submitButton.textContent = "Add";
+    buttonContainer.append(cancelButton, submitButton);
+    projectForm.append(formTitle, nameTitle, nameInput, buttonContainer);
+    return projectForm;
   };
 
   const createTaskForm = () => {};

@@ -6,7 +6,10 @@ init();
 function addButtonListeners() {
   const addProjectButton = document.getElementById("add-project");
   addProjectButton.addEventListener("click", () => {
-    displayController.createProjectForm();
+    const body = document.querySelector("body");
+    let form = displayController.createProjectForm();
+    form.focus();
+    body.append(form);
   });
   const addTasksButton = document.getElementById("add-task");
   addTasksButton.addEventListener("click", () => {
