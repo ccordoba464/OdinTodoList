@@ -52,6 +52,7 @@ const projectTasks = (() => {
     while (projectTasksElement.firstChild) {
       projectTasksElement.firstChild.remove();
     }
+
     for (let task of projectTasks) {
       let taskElement = createTaskElement(task);
       taskElement.addEventListener("click", () => {
@@ -109,6 +110,7 @@ const projectTasks = (() => {
 
     deleteTaskButton.addEventListener("click", () => {
       expandedTask.remove();
+      displayController.deleteTask(taskObject);
     });
 
     expandedTask.append(contentContainer, detailsContainer);

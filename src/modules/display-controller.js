@@ -146,7 +146,24 @@ const displayController = (() => {
     return taskForm;
   };
 
-  return { displayTasks, createProjectForm, createTaskForm, currentProject };
+  const deleteTask = taskObject => {
+    for (let project of projects.projectsList) {
+      if (currentProject.title === project.title) {
+        project.tasks.splice(project.tasks.indexOf(taskObject), 1);
+        currentProject = project;
+      }
+    }
+    tasks.populateTaskSection(currentProject.tasks);
+    console.log(currentProject.tasks);
+  };
+
+  return {
+    displayTasks,
+    createProjectForm,
+    createTaskForm,
+    currentProject,
+    deleteTask,
+  };
 })();
 
 export default displayController;
