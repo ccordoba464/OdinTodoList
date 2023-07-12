@@ -24,6 +24,7 @@ const projects = (() => {
   const createProjectElement = project => {
     let newProject = document.createElement("div");
     newProject.classList.add("project");
+    newProject.id = project.title;
 
     let projectTitle = document.createElement("div");
     projectTitle.classList.add("project-title");

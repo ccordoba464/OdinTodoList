@@ -12,8 +12,21 @@ const projectTasks = (() => {
 
   const createTask = (title, description, dueDate, priority) => {
     let taskObject = tasks(title, description, dueDate, priority);
+
     for (let project of projects.projectsList) {
       if (displayController.currentProject.title === project.title) {
+        const projectsContainer = document.getElementById("projects");
+        let projectsCreated = projectsContainer.querySelectorAll(".project");
+        projectsCreated.forEach(project => {
+          console.log(projectsCreated);
+          console.log(displayController.currentProject.title);
+
+          if (project.id === displayController.currentProject.title) {
+            let tasksNum = project.querySelector(".project-items");
+            tasksNum.textContent = +tasksNum.textContent + 1;
+          }
+        });
+
         project.tasks.push(taskObject);
         populateTaskSection(project.tasks);
       }
