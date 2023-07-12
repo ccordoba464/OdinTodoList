@@ -44,12 +44,7 @@ const displayController = (() => {
     });
 
     cancelButton.addEventListener("click", () => {
-      if (nameInput.checkValidity()) {
-        projects.createProject(nameInput.value);
-        projectForm.remove();
-      } else {
-        alert("Enter Project Name");
-      }
+      projectForm.remove();
     });
 
     return projectForm;
