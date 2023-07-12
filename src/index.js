@@ -8,17 +8,16 @@ function addButtonListeners() {
   addProjectButton.addEventListener("click", () => {
     if (!document.getElementById("project-form")) {
       const body = document.querySelector("body");
-      let form = displayController.createProjectForm();
-      form.focus();
-      body.append(form);
+      let formElement = displayController.createProjectForm();
+      body.append(formElement);
     }
   });
   const addTasksButton = document.getElementById("add-task");
   addTasksButton.addEventListener("click", () => {
     if (!document.getElementById("task-form")) {
       const body = document.querySelector("body");
-      let form = displayController.createTaskForm();
-      body.append(form);
+      let formElement = displayController.createTaskForm();
+      body.append(formElement);
     }
   });
 }

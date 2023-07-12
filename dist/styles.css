@@ -136,7 +136,7 @@ table {
 :root {
   font-family: sans-serif;
   --primary-color: rgb(79, 99, 103);
-  --secondary-color: rgba(122, 158, 159, 0.83);
+  --secondary-color: rgba(122, 158, 159);
   --accent-color: rgb(239, 248, 226);
 }
 
