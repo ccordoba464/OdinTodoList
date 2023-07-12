@@ -65,7 +65,7 @@ const displayController = (() => {
     nameTitle.classList.add("title");
     nameTitle.textContent = "Task Name";
     const nameInput = document.createElement("input");
-    nameInput.setAttribute("required", "true");
+    //nameInput.setAttribute("required", "true");
     nameContainer.append(nameTitle, nameInput);
 
     const descriptionContainer = document.createElement("div");
@@ -82,7 +82,7 @@ const displayController = (() => {
     dateTitle.textContent = "Due Date";
     const dateInput = document.createElement("input");
     dateInput.type = "date";
-    dateInput.setAttribute("required", "true");
+    //dateInput.setAttribute("required", "true");
     dateContainer.append(dateTitle, dateInput);
 
     const priorityContainer = document.createElement("div");

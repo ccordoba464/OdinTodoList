@@ -6,7 +6,7 @@ const projectTasks = (() => {
   const projectTasksElement = document.getElementById("project-tasks");
 
   const tasks = (title, description, dueDate, priority) => {
-    dueDate = format(parseISO(dueDate), "MMM dd yyyy");
+    if (dueDate) dueDate = format(parseISO(dueDate), "MMM dd yyyy");
     return { title, description, dueDate, priority };
   };
 
@@ -54,11 +54,69 @@ const projectTasks = (() => {
     }
     for (let task of projectTasks) {
       let taskElement = createTaskElement(task);
+      taskElement.addEventListener("click", () => {
+        let expandedTask = expandTask(task);
+        const body = document.querySelector("body");
+        body.append(expandedTask);
+      });
       projectTasksElement.appendChild(taskElement);
     }
   };
 
-  return { createTaskElement, populateTaskSection, createTask };
+  const expandTask = taskObject => {
+    const expandedTask = document.createElement("div");
+    expandedTask.id = taskObject.title;
+    expandedTask.classList.add("expanded-task");
+
+    const contentContainer = document.createElement("div");
+    contentContainer.classList.add("content-container");
+
+    const taskTitle = document.createElement("div");
+    taskTitle.id = "task-title";
+    taskTitle.textContent = taskObject.title;
+
+    const taskDescription = document.createElement("div");
+    taskDescription.id = "task-description";
+    taskDescription.textContent = taskObject.description;
+
+    contentContainer.append(taskTitle, taskDescription);
+
+    const detailsContainer = document.createElement("div");
+    detailsContainer.classList.add("details-container");
+
+    const taskPriority = document.createElement("div");
+    taskPriority.id = "task-priority";
+    taskPriority.textContent = "Priority: " + taskObject.priority;
+
+    const taskDate = document.createElement("div");
+    taskDate.id = "task-date";
+    taskDate.textContent = "Due: " + taskObject.dueDate;
+
+    const taskProject = document.createElement("div");
+    taskProject.id = "task-project";
+    taskProject.textContent = "Project: " + "N/A";
+
+    const deleteTaskButton = document.createElement("button");
+    deleteTaskButton.id = "delete-task-button";
+    deleteTaskButton.textContent = "Delete Task";
+
+    detailsContainer.append(
+      taskPriority,
+      taskDate,
+      taskProject,
+      deleteTaskButton
+    );
+
+    deleteTaskButton.addEventListener("click", () => {
+      expandedTask.remove();
+    });
+
+    expandedTask.append(contentContainer, detailsContainer);
+
+    return expandedTask;
+  };
+
+  return { createTaskElement, populateTaskSection, createTask, expandTask };
 })();
 
 export default projectTasks;
