@@ -1,12 +1,12 @@
 import displayController from "./display-controller";
 import projects from "./projects";
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 
 const projectTasks = (() => {
   const projectTasksElement = document.getElementById("project-tasks");
 
   const tasks = (title, description, dueDate, priority) => {
-    dueDate = format(new Date(dueDate), "MMM dd yyyy");
+    dueDate = format(parseISO(dueDate), "MMM dd yyyy");
     return { title, description, dueDate, priority };
   };
 
