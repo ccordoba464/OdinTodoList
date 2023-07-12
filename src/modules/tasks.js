@@ -1,13 +1,23 @@
+import displayController from "./display-controller";
+import projects from "./projects";
+import { format } from "date-fns";
+
 const projectTasks = (() => {
   const projectTasksElement = document.getElementById("project-tasks");
 
   const tasks = (title, description, dueDate, priority) => {
+    dueDate = format(new Date(dueDate), "MMM dd yyyy");
     return { title, description, dueDate, priority };
   };
 
   const createTask = (title, description, dueDate, priority) => {
-    let task = tasks(title, description, dueDate, priority);
-    createTaskElement(task);
+    let taskObject = tasks(title, description, dueDate, priority);
+    for (let project of projects.projectsList) {
+      if (displayController.currentProject.title === project.title) {
+        project.tasks.push(taskObject);
+        populateTaskSection(project.tasks);
+      }
+    }
   };
 
   const createTaskElement = task => {
@@ -33,13 +43,13 @@ const projectTasks = (() => {
     while (projectTasksElement.firstChild) {
       projectTasksElement.firstChild.remove();
     }
-    for (let tasks of projectTasks) {
-      let taskElement = createTask(tasks);
+    for (let task of projectTasks) {
+      let taskElement = createTaskElement(task);
       projectTasksElement.appendChild(taskElement);
     }
   };
 
-  return { createTaskElement, populateTaskSection };
+  return { createTaskElement, populateTaskSection, createTask };
 })();
 
 export default projectTasks;

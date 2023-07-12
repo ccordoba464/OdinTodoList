@@ -1,11 +1,13 @@
 import projects from "./projects";
-import projectTasks from "./tasks";
+import tasks from "./tasks";
 
 const displayController = (() => {
+  let currentProject;
   const displayTasks = projectObject => {
     for (let project of projects.projectsList) {
       if (projectObject.title === project.title) {
-        projectTasks.populateTaskSection(project.tasks);
+        currentProject = project;
+        tasks.populateTaskSection(project.tasks);
       }
     }
   };
@@ -86,8 +88,16 @@ const displayController = (() => {
     const priorityTitle = document.createElement("div");
     priorityTitle.classList.add("title");
     priorityTitle.textContent = "Priority";
-    const priorityInput = document.createElement("input");
+    const priorityInput = document.createElement("select");
     priorityInput.setAttribute("required", "true");
+    const highChoice = document.createElement("option");
+    highChoice.textContent = "High";
+    const mediumChoice = document.createElement("option");
+    mediumChoice.textContent = "Medium";
+    const lowChoice = document.createElement("option");
+    lowChoice.textContent = "Low";
+    priorityInput.append(highChoice, mediumChoice, lowChoice);
+
     priorityContainer.append(priorityTitle, priorityInput);
 
     const inputContainer = document.createElement("div");
@@ -116,7 +126,12 @@ const displayController = (() => {
 
     submitButton.addEventListener("click", () => {
       if (nameInput.checkValidity()) {
-        projects.createProject(nameInput.value);
+        tasks.createTask(
+          nameInput.value,
+          descriptionInput.value,
+          dateInput.value,
+          priorityInput.value
+        );
         taskForm.remove();
       } else {
         alert("Enter Project Name");
@@ -130,7 +145,7 @@ const displayController = (() => {
     return taskForm;
   };
 
-  return { displayTasks, createProjectForm, createTaskForm };
+  return { displayTasks, createProjectForm, createTaskForm, currentProject };
 })();
 
 export default displayController;

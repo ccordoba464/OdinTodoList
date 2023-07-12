@@ -11,12 +11,13 @@ const projects = (() => {
 
   const createProject = title => {
     let projectObject = project(title);
+    displayController.currentProject = projectObject;
     projectsList.push(projectObject);
     let projectElement = createProjectElement(projectObject);
-    projectElement.addEventListener(
-      "click",
-      displayController.displayTasks(projectObject)
-    );
+    projectElement.addEventListener("click", () => {
+      displayController.currentProject = projectObject;
+      displayController.displayTasks(projectObject);
+    });
     projectsContainer.append(projectElement);
   };
 
