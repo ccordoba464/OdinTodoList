@@ -33,13 +33,11 @@ const tasksManager = (() => {
       }
     } else {
       projectsManager.selectedProject.tasks.push(taskObject);
-
       populateTaskSection(projectsManager.selectedProject.tasks);
-
-      const inboxElement = document.getElementById("inbox");
-      let tasksNum = inboxElement.querySelector(".project-items");
-      tasksNum.textContent = +tasksNum.textContent + 1;
     }
+    const inboxElement = document.getElementById("inbox");
+    let tasksNum = inboxElement.querySelector(".project-items");
+    tasksNum.textContent = +tasksNum.textContent + 1;
   };
 
   const deleteTask = taskObject => {
@@ -60,7 +58,9 @@ const tasksManager = (() => {
         });
       }
     }
-
+    const inboxElement = document.getElementById("inbox");
+    let tasksNum = inboxElement.querySelector(".project-items");
+    tasksNum.textContent = +tasksNum.textContent - 1;
     tasksManager.populateTaskSection(projectsManager.selectedProject.tasks);
   };
 
