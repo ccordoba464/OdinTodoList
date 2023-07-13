@@ -1,12 +1,12 @@
 import projectsManager from "./projects-manager";
-import tasks from "./tasks";
+import tasksManager from "./tasks-manager";
 
 const displayController = (() => {
   const displayTasks = projectObject => {
     for (let project of projectsManager.projectsList) {
       if (projectObject.title === project.title) {
         projectsManager.selectedProject = project;
-        tasks.populateTaskSection(project.tasks);
+        tasksManager.populateTaskSection(project.tasks);
       }
     }
   };
@@ -28,7 +28,7 @@ const displayController = (() => {
       }
     }
 
-    tasks.populateTaskSection(projectsManager.selectedProject.tasks);
+    tasksManager.populateTaskSection(projectsManager.selectedProject.tasks);
   };
 
   return {

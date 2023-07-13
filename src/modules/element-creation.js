@@ -1,13 +1,15 @@
 import displayController from "./display-controller";
-import tasks from "./tasks";
+import tasksManager from "./tasks-manager";
 import projects from "./projects-manager";
 
 const elementCreation = (() => {
+  const body = document.querySelector("body");
+
   /* Tasks */
 
   const createTaskElement = task => {
-    let newTask = document.createElement("div");
-    newTask.classList.add("task");
+    let taskElement = document.createElement("div");
+    taskElement.classList.add("task");
 
     let taskTitle = document.createElement("div");
     taskTitle.classList.add("task-title");
@@ -19,9 +21,13 @@ const elementCreation = (() => {
     taskDate.classList.add("task-date");
     taskDate.textContent = task.dueDate;
 
-    newTask.append(taskTitle, taskDescription, taskDate);
+    taskElement.append(taskTitle, taskDescription, taskDate);
 
-    return newTask;
+    taskElement.addEventListener("click", () => {
+      elementCreation.expandTask(task);
+    });
+
+    return taskElement;
   };
 
   const expandTask = taskObject => {
@@ -75,7 +81,7 @@ const elementCreation = (() => {
 
     expandedTask.append(contentContainer, detailsContainer);
 
-    return expandedTask;
+    body.append(expandedTask);
   };
 
   /* Projects */
@@ -137,7 +143,7 @@ const elementCreation = (() => {
       projectForm.remove();
     });
 
-    return projectForm;
+    body.append(projectForm);
   };
 
   const createTaskForm = () => {
@@ -214,7 +220,7 @@ const elementCreation = (() => {
 
     submitButton.addEventListener("click", () => {
       if (nameInput.checkValidity()) {
-        tasks.createTask(
+        tasksManager.createTask(
           nameInput.value,
           descriptionInput.value,
           dateInput.value,
@@ -230,7 +236,7 @@ const elementCreation = (() => {
       taskForm.remove();
     });
 
-    return taskForm;
+    body.append(taskForm);
   };
 
   return {
