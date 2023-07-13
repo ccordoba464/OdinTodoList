@@ -1,5 +1,5 @@
 import elementCreation from "./modules/element-creation";
-import projects from "./modules/projects-manager";
+import projectsManager from "./modules/projects-manager";
 
 init();
 
@@ -21,5 +21,5 @@ function addButtonListeners() {
 
 function init() {
   addButtonListeners();
-  projects.createProject("Inbox");
+  projectsManager.createProject("Inbox");
 }

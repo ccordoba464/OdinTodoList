@@ -13,7 +13,7 @@ const projectsManager = (() => {
 
   const createProject = title => {
     let projectObject = project(title);
-    selectedProject = projectObject;
+    projectsManager.selectedProject = projectObject;
     projectsList.push(projectObject);
     let projectElement = elementCreation.createProjectElement(projectObject);
     projectElement.addEventListener("click", () => {
