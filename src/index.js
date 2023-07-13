@@ -1,4 +1,4 @@
-import displayController from "./modules/display-controller";
+import elementCreation from "./modules/element-creation";
 import projects from "./modules/projects";
 
 init();
@@ -8,15 +8,16 @@ function addButtonListeners() {
   addProjectButton.addEventListener("click", () => {
     if (!document.getElementById("project-form")) {
       const body = document.querySelector("body");
-      let formElement = displayController.createProjectForm();
+      let formElement = elementCreation.createProjectForm();
       body.append(formElement);
     }
   });
+
   const addTasksButton = document.getElementById("add-task");
   addTasksButton.addEventListener("click", () => {
     if (!document.getElementById("task-form")) {
       const body = document.querySelector("body");
-      let formElement = displayController.createTaskForm();
+      let formElement = elementCreation.createTaskForm();
       body.append(formElement);
     }
   });
@@ -24,5 +25,5 @@ function addButtonListeners() {
 
 function init() {
   addButtonListeners();
-  projects.createProject("To-do");
+  projects.createProject("Inbox");
 }

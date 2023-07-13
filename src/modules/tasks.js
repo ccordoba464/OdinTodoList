@@ -3,7 +3,7 @@ import projects from "./projects";
 import elementCreation from "./element-creation";
 import { format, parseISO } from "date-fns";
 
-const projectTasks = (() => {
+const tasks = (() => {
   const projectTasksElement = document.getElementById("project-tasks");
 
   const tasks = (title, description, dueDate, priority) => {
@@ -48,4 +48,4 @@ const projectTasks = (() => {
   return { populateTaskSection, createTask };
 })();
 
-export default projectTasks;
+export default tasks;

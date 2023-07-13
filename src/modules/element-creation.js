@@ -1,4 +1,6 @@
 import displayController from "./display-controller";
+import tasks from "./tasks";
+import projects from "./projects";
 
 const elementCreation = (() => {
   /* Tasks */
