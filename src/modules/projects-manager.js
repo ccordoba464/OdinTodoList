@@ -24,7 +24,7 @@ const projectsManager = (() => {
     projectsContainer.append(projectElement);
   };
 
-  return { projectsList, selectedProject, createProject };
+  return { projectsList, selectedProject, createProject, project };
 })();
 
 export default projectsManager;

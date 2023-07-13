@@ -13,22 +13,32 @@ const tasksManager = (() => {
   const createTask = (title, description, dueDate, priority) => {
     let taskObject = tasks(title, description, dueDate, priority);
 
-    for (let project of projectsManager.projectsList) {
-      if (projectsManager.selectedProject.title === project.title) {
-        project.tasks.push(taskObject);
-        projectsManager.selectedProject = project;
-        populateTaskSection(project.tasks);
+    if (projectsManager.selectedProject.title !== "inbox") {
+      for (let project of projectsManager.projectsList) {
+        if (projectsManager.selectedProject.title === project.title) {
+          project.tasks.push(taskObject);
+          projectsManager.selectedProject = project;
+          populateTaskSection(project.tasks);
 
-        const projectElementsContainer = document.getElementById("projects");
-        let projectElementsCreated =
-          projectElementsContainer.querySelectorAll(".project");
-        projectElementsCreated.forEach(projectElement => {
-          if (projectElement.id === projectsManager.selectedProject.title) {
-            let tasksNum = projectElement.querySelector(".project-items");
-            tasksNum.textContent = +tasksNum.textContent + 1;
-          }
-        });
+          const projectElementsContainer = document.getElementById("projects");
+          let projectElementsCreated =
+            projectElementsContainer.querySelectorAll(".project");
+          projectElementsCreated.forEach(projectElement => {
+            if (projectElement.id === projectsManager.selectedProject.title) {
+              let tasksNum = projectElement.querySelector(".project-items");
+              tasksNum.textContent = +tasksNum.textContent + 1;
+            }
+          });
+        }
       }
+    } else {
+      projectsManager.selectedProject.tasks.push(taskObject);
+
+      populateTaskSection(projectsManager.selectedProject.tasks);
+
+      const inboxElement = document.getElementById("inbox");
+      let tasksNum = inboxElement.querySelector(".project-items");
+      tasksNum.textContent = +tasksNum.textContent + 1;
     }
   };
 

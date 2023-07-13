@@ -1,6 +1,6 @@
 import displayController from "./modules/display-controller";
 import elementCreation from "./modules/element-creation";
-import projectsManager from "./modules/projects-manager";
+import inboxManager from "./modules/inbox-manager";
 
 init();
 
@@ -22,6 +22,6 @@ function addButtonListeners() {
 }
 
 function init() {
-  projectsManager.createProject("Inbox");
+  inboxManager.createIndexElement();
   addButtonListeners();
 }

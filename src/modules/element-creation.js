@@ -86,7 +86,7 @@ const elementCreation = (() => {
     body.append(expandedTask);
   };
 
-  /* Projects */
+  /* Projects / Inbox */
 
   const createProjectElement = project => {
     let newProject = document.createElement("div");
@@ -103,6 +103,23 @@ const elementCreation = (() => {
     newProject.append(projectTitle, projectItems);
 
     return newProject;
+  };
+
+  const createInboxElement = () => {
+    let inboxElement = document.createElement("div");
+    inboxElement.classList.add("project");
+    inboxElement.id = "inbox";
+
+    let projectTitle = document.createElement("div");
+    projectTitle.classList.add("project-title");
+    projectTitle.textContent = "inbox";
+    let projectItems = document.createElement("div");
+    projectItems.classList.add("project-items");
+    projectItems.textContent = 0;
+
+    inboxElement.append(projectTitle, projectItems);
+
+    return inboxElement;
   };
 
   /* Forms */
@@ -246,6 +263,7 @@ const elementCreation = (() => {
     createTaskElement,
     expandTask,
     createProjectElement,
+    createInboxElement,
     createProjectForm,
     createTaskForm,
   };
