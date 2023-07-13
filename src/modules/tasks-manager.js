@@ -32,6 +32,28 @@ const tasksManager = (() => {
     }
   };
 
+  const deleteTask = taskObject => {
+    console.log(projectsManager.selectedProject);
+    for (let project of projectsManager.projectsList) {
+      if (projectsManager.selectedProject.title === project.title) {
+        project.tasks.splice(project.tasks.indexOf(taskObject), 1);
+        projectsManager.selectedProject = project;
+
+        const projectElementsContainer = document.getElementById("projects");
+        let projectElementsCreated =
+          projectElementsContainer.querySelectorAll(".project");
+        projectElementsCreated.forEach(projectElement => {
+          if (projectElement.id === projectsManager.selectedProject.title) {
+            let tasksNum = projectElement.querySelector(".project-items");
+            tasksNum.textContent = +tasksNum.textContent - 1;
+          }
+        });
+      }
+    }
+
+    tasksManager.populateTaskSection(projectsManager.selectedProject.tasks);
+  };
+
   const populateTaskSection = projectTasks => {
     while (projectTasksContainer.firstChild) {
       projectTasksContainer.firstChild.remove();
@@ -43,7 +65,7 @@ const tasksManager = (() => {
     }
   };
 
-  return { populateTaskSection, createTask };
+  return { createTask, deleteTask, populateTaskSection };
 })();
 
 export default tasksManager;

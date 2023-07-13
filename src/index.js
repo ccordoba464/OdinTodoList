@@ -12,6 +12,7 @@ function addButtonListeners() {
   });
 
   const addTasksButton = document.getElementById("add-task");
+
   addTasksButton.addEventListener("click", () => {
     if (!document.getElementById("task-form")) {
       elementCreation.createTaskForm();
@@ -20,6 +21,6 @@ function addButtonListeners() {
 }
 
 function init() {
-  addButtonListeners();
   projectsManager.createProject("Inbox");
+  addButtonListeners();
 }

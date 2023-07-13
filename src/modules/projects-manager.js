@@ -1,5 +1,5 @@
-import displayController from "./display-controller";
 import elementCreation from "./element-creation";
+import tasksManager from "./tasks-manager";
 
 const projectsManager = (() => {
   const projectsContainer = document.getElementById("projects");
@@ -16,9 +16,10 @@ const projectsManager = (() => {
     projectsManager.selectedProject = projectObject;
     projectsList.push(projectObject);
     let projectElement = elementCreation.createProjectElement(projectObject);
+
     projectElement.addEventListener("click", () => {
-      displayController.currentProject = projectObject;
-      displayController.displayTasks(projectObject);
+      projectsManager.selectedProject = projectObject;
+      tasksManager.populateTaskSection(projectsManager.selectedProject.tasks);
     });
     projectsContainer.append(projectElement);
   };

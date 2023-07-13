@@ -1,6 +1,5 @@
-import displayController from "./display-controller";
 import tasksManager from "./tasks-manager";
-import projects from "./projects-manager";
+import projectsManager from "./projects-manager";
 
 const elementCreation = (() => {
   const body = document.querySelector("body");
@@ -76,7 +75,7 @@ const elementCreation = (() => {
 
     deleteTaskButton.addEventListener("click", () => {
       expandedTask.remove();
-      displayController.deleteTask(taskObject);
+      tasksManager.deleteTask(taskObject);
     });
 
     expandedTask.append(contentContainer, detailsContainer);
@@ -132,7 +131,7 @@ const elementCreation = (() => {
     submitButton.addEventListener("click", () => {
       event.preventDefault();
       if (nameInput.checkValidity()) {
-        projects.createProject(nameInput.value);
+        projectsManager.createProject(nameInput.value);
         projectForm.remove();
       } else {
         alert("Enter Project Name");
@@ -219,6 +218,7 @@ const elementCreation = (() => {
     );
 
     submitButton.addEventListener("click", () => {
+      event.preventDefault();
       if (nameInput.checkValidity()) {
         tasksManager.createTask(
           nameInput.value,
