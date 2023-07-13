@@ -1,5 +1,5 @@
 import elementCreation from "./modules/element-creation";
-import projects from "./modules/projects";
+import projects from "./modules/projects-manager";
 
 init();
 

@@ -1,9 +1,10 @@
 import displayController from "./display-controller";
 import elementCreation from "./element-creation";
 
-const projects = (() => {
+const projectsManager = (() => {
   const projectsContainer = document.getElementById("projects");
   let projectsList = [];
+  let selectedProject;
 
   const project = title => {
     let tasks = [];
@@ -12,7 +13,7 @@ const projects = (() => {
 
   const createProject = title => {
     let projectObject = project(title);
-    displayController.currentProject = projectObject;
+    selectedProject = projectObject;
     projectsList.push(projectObject);
     let projectElement = elementCreation.createProjectElement(projectObject);
     projectElement.addEventListener("click", () => {
@@ -22,7 +23,7 @@ const projects = (() => {
     projectsContainer.append(projectElement);
   };
 
-  return { projectsList, createProject };
+  return { projectsList, selectedProject, createProject };
 })();
 
-export default projects;
+export default projectsManager;

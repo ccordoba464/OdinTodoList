@@ -1,5 +1,5 @@
 import displayController from "./display-controller";
-import projects from "./projects";
+import projects from "./projects-manager";
 import elementCreation from "./element-creation";
 import { format, parseISO } from "date-fns";
 
