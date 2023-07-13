@@ -1,5 +1,6 @@
 import tasksManager from "./tasks-manager";
 import projectsManager from "./projects-manager";
+import displayController from "./display-controller";
 
 const elementCreation = (() => {
   const body = document.querySelector("body");
@@ -23,7 +24,9 @@ const elementCreation = (() => {
     taskElement.append(taskTitle, taskDescription, taskDate);
 
     taskElement.addEventListener("click", () => {
-      elementCreation.expandTask(task);
+      if (displayController.checkAvailability()) {
+        elementCreation.expandTask(task);
+      }
     });
 
     return taskElement;
@@ -31,7 +34,7 @@ const elementCreation = (() => {
 
   const expandTask = taskObject => {
     const expandedTask = document.createElement("div");
-    expandedTask.id = taskObject.title;
+    expandedTask.id = "expanded-task";
     expandedTask.classList.add("expanded-task");
 
     const contentContainer = document.createElement("div");
