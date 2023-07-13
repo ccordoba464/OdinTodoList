@@ -34,7 +34,6 @@ const projectTasks = (() => {
     while (projectTasksElement.firstChild) {
       projectTasksElement.firstChild.remove();
     }
-
     for (let task of projectTasks) {
       let taskElement = elementCreation.createTaskElement(task);
       taskElement.addEventListener("click", () => {

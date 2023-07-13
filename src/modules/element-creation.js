@@ -1,6 +1,8 @@
 import displayController from "./display-controller";
 
 const elementCreation = (() => {
+  /* Tasks */
+
   const createTaskElement = task => {
     let newTask = document.createElement("div");
     newTask.classList.add("task");
@@ -73,6 +75,27 @@ const elementCreation = (() => {
 
     return expandedTask;
   };
+
+  /* Projects */
+
+  const createProjectElement = project => {
+    let newProject = document.createElement("div");
+    newProject.classList.add("project");
+    newProject.id = project.title;
+
+    let projectTitle = document.createElement("div");
+    projectTitle.classList.add("project-title");
+    projectTitle.textContent = project.title;
+    let projectItems = document.createElement("div");
+    projectItems.classList.add("project-items");
+    projectItems.textContent = project.tasks.length;
+
+    newProject.append(projectTitle, projectItems);
+
+    return newProject;
+  };
+
+  /* Forms */
 
   const createProjectForm = () => {
     const projectForm = document.createElement("form");
@@ -208,7 +231,13 @@ const elementCreation = (() => {
     return taskForm;
   };
 
-  return { createTaskElement, expandTask, createProjectForm, createTaskForm };
+  return {
+    createTaskElement,
+    expandTask,
+    createProjectElement,
+    createProjectForm,
+    createTaskForm,
+  };
 })();
 
 export default elementCreation;
